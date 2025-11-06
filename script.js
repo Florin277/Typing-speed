@@ -1,10 +1,16 @@
 const text = document.getElementById("output");
 const words = text.innerHTML;
-let userSeconds = 5;
+const sizeGreenLetter = 28;
+const sizeRedLetter = 26;
+let userSeconds = 60;
 let timer;
 let newText = " ";
 let noCorrectWords = 0;
 let pos = 0;
+let starGame = 1;
+let noLetterHtml;
+let noUserLetter = 0;
+let noCorrectLetter = 0;
 document.getElementById("UserTime").innerHTML = userSeconds;
 
 function updateTime() {
@@ -19,12 +25,6 @@ function time() {
     }
     document.getElementById("UserTime").innerHTML = userSeconds;
 }
-let starGame = 1;
-const sizeGreenLetter = 28;
-const sizeRedLetter = 26;
-let noLetterHtml;
-let noUserLetter = 0;
-let noCorrectLetter = 0;
 
 function checkPosition(pressedKey) {
     if (userSeconds) {
@@ -64,7 +64,6 @@ function checkPosition(pressedKey) {
     }
     if (pos === words.length && noCorrectLetter === noUserLetter  ) {
         displayScore();
-
     }
     text.innerHTML = newText + words.slice(pos);
     if (pos < 1) {
@@ -80,5 +79,6 @@ function createText(pos, color) {
 function displayScore () {
     document.getElementById("ScoreBox").innerHTML = noCorrectWords;
 }
+
 document.onkeydown = checkPosition;
 
